@@ -1,4 +1,7 @@
 ---
+- name: Display kube_node_v1beta3 value
+  debug: var=kube_node_v1beta3
+
 - name: Copy v1beta3 style minion definitions to master
   template: src=node-v1beta3.j2 dest=/tmp/node-{{ item }}.json
   changed_when: false

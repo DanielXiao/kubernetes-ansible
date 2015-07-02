@@ -44,7 +44,7 @@ def main():
 
     output = popen.stdout.read()
     if "v1beta3" not in output:
-	facts['kube_node_v1beta3'] = False
+        facts['kube_node_v1beta3'] = False
 
     module.exit_json(**result)
 
