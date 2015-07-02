@@ -1,0 +1,9 @@
+{
+        "EtcdURL":["http://{{ hostvars[groups['etcd'][0]]['ansible_default_ipv4']['address'] }}:2379"],
+        "BDEURL":"https://10.111.89.138:8443/serengeti",
+        "BDEUsername":"root",
+        "BDEPassword":"vmware",
+        "RegistryAuth":true,
+        "RegistryUsername":"user1",
+        "RegistryPassword":"user1"
+}

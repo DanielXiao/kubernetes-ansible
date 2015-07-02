@@ -8,6 +8,9 @@
     - kube-proxy.service
     - kubelet.service
 
+- name: write the kubelet config file
+  template: src=config.json.j2 dest=/bin/config.json owner=root group=root mode=0644
+
 - name: write the config files for kubelet
   template: src=kubelet.j2 dest=/etc/kubernetes/kubelet
   when: not kubelet_use_pre_v10_vars
