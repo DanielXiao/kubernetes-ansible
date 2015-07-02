@@ -1,4 +1,11 @@
 ---
+- name: write the service script file
+  copy: src={{ item }} dest=/usr/lib/systemd/system/{{ item }} owner=root group=root mode=0644
+  with_items:
+    - kube-apiserver.service
+    - kube-controller-manager.service
+    - kube-scheduler.service
+
 - name: write the config files for api server
   template: src=apiserver.j2 dest=/etc/kubernetes/apiserver
   notify:
