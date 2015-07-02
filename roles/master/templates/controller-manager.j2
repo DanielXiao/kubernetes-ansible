@@ -14,6 +14,6 @@ AWS_CREDENTIAL_FILE="/etc/aws/credentials"
 {% else %}
 
 # Add you own!
-KUBE_CONTROLLER_MANAGER_ARGS=""
+KUBE_CONTROLLER_MANAGER_ARGS="--machines={{ groups['minions']|join(',') }}"
 
 {% endif %}
