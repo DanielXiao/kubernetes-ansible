@@ -22,5 +22,5 @@ KUBELET_API_SERVER="--api_servers=http://{{ master_ip_address }}:8080"
 {% if dns_setup %}
 KUBELET_ARGS="--cluster_dns={{ dns_server }} --cluster_domain={{ dns_domain }}"
 {% else %}
-KUBELET_ARGS=""
+KUBELET_ARGS="--pod-infra-container-image='reg-bj.eng.vmware.com:5000/pause:0.8.0' --host-network-sources='*'"
 {% endif %}
