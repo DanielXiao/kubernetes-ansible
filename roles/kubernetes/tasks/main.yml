@@ -8,6 +8,9 @@
 - name: create directory for config files
   file: path=/etc/kubernetes/ state=directory mode=0755
 
+- name: create directory for config files
+  file: path=/var/run/kubernetes/ state=directory mode=0777
+
 - name: write the global config file
   template: src=config.j2 dest=/etc/kubernetes/config
   notify:
