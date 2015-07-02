@@ -6,8 +6,7 @@
           - restart proxy
 
 - name: restart kubelet
-  shell: echo 'dummy'
-#  service: name=kubelet state=restarted
+  service: name=kubelet state=restarted
 
 - name: restart proxy
   service: name=kube-proxy state=restarted

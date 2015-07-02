@@ -1,4 +1,7 @@
 ---
+- name: create kubelet directory
+  file: path=/var/lib/kubelet/ state=directory mode=0755
+
 - name: write the service script file
   copy: src={{ item }} dest=/usr/lib/systemd/system/{{ item }} owner=root group=root mode=0644
   with_items:
@@ -19,13 +22,8 @@
   notify:
           - restart proxy
 
-- name: Start kubelet process (This is workaround)
-  shell: nohup /usr/bin/kubelet --logtostderr=true --v=3 --api_servers=http://{{ master_ip_address }}:8080 --address=0.0.0.0 --hostname_override={{ inventory_hostname }} --allow_privileged=true &
-  async: 45
-  poll: 0
-
-#- name: Enable kubelet
-#  service: name=kubelet enabled=yes state=started
+- name: Enable kubelet
+  service: name=kubelet enabled=yes state=started
 
 - name: Enable proxy
   service: name=kube-proxy enabled=yes state=started
